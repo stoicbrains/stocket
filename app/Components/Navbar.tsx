@@ -9,14 +9,20 @@ import { getFirestore, collection, getDocs, deleteDoc, doc, count } from "fireba
 import { app } from '../firebase';
 import bin from '../assets/images/bin.png'
 import { useRouter } from "next/navigation";
-const Navbar = () => {
+type Product = {
+  id: string;
+  name: string;
+  price: string;
+  // ... other properties
+};
+
+const Navbar: React.FC = () => {
   const router = useRouter();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [trigger, setTrigger] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
-  const [total,setTotal] = useState(0);
-  const [count1,setCount1] = useState(1);
-
+  const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [total, setTotal] = useState(0);
+  const [count1, setCount1] = useState(1);
 
   const handleScroll = () => {
     const scrollY = window.scrollY;
@@ -36,11 +42,11 @@ const Navbar = () => {
     const db = getFirestore(app);
     const productsCollection = collection(db, "products");
     const productsSnapshot = await getDocs(productsCollection);
-    const products = productsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+    const products = productsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Product));
     setCartItems(products);
   };
 
-  const deleteProduct = async (productId:any) => {
+  const deleteProduct = async (productId: any) => {
     try {
       const db = getFirestore(app);
       const productRef = doc(db, "products", productId);
@@ -54,6 +60,7 @@ const Navbar = () => {
   useEffect(() => {
     fetchCartItems();
   }, []);
+
   useEffect(() => {
     setTotal(cartItems.reduce((acc, item) => acc + (parseInt(item.price.replace('Rs ', '')) * count1), 0));
   }, [count1, cartItems]);
@@ -88,7 +95,6 @@ const Navbar = () => {
                   setTrigger(true);
                   router.refresh();
                 }}
-                
               />
             </div>
           </div>
@@ -104,7 +110,7 @@ const Navbar = () => {
             className="h-[40px] w-[40px] rounded-[50%] bg-red-600 float-end translate-y-[-1rem] translate-x-[1rem]"
             onClick={() => {
               setTrigger(false);
-              fetchCartItems()
+              fetchCartItems();
             }}
           >
             X
@@ -115,26 +121,15 @@ const Navbar = () => {
               {cartItems.map((item) => (
                 <li key={item.id} className="flex justify-center gap-7 items-center text-sm bg-sky-300 rounded-xl p-10 my-5">
                   {item.name}-{item.price}
-              
-                  <button className="h-[40px] w-[60px] bg-black text-white text-sm rounded-xl" onClick={()=>{
-                    setCount1(count1+1);
-                  }}>+</button>
+                  <button className="h-[40px] w-[60px] bg-black text-white text-sm rounded-xl" onClick={() => { setCount1(count1 + 1); }}>+</button>
                   {count1}
-                  <button className="h-[40px] w-[60px] bg-black text-white text-sm rounded-xl" onClick={()=>{
-                    setCount1(count1 - 1)
-                  }}>-</button>
-                  
-                  <div>
-      Total: {parseInt(item.price.replace('Rs ', '')) * count1}
-      
-    </div>
-    
-    <button
+                  <button className="h-[40px] w-[60px] bg-black text-white text-sm rounded-xl" onClick={() => { setCount1(count1 - 1); }}>-</button>
+                  <div>Total: {parseInt(item.price.replace('Rs ', '')) * count1}</div>
+                  <button
                     className="h-[40px] w-[40px] text-white text-sm rounded-xl"
                     onClick={() => deleteProduct(item.id)}
                   >
-                    <Image src={bin} alt="" objectFit="cover"/>
-        
+                    <Image src={bin} alt="" objectFit="cover" />
                   </button>
                 </li>
               ))}
