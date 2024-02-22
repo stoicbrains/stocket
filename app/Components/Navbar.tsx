@@ -1,26 +1,24 @@
-"use client"
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import user from '../assets/images/login.png';
-import cat from '../assets/images/cart.png';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { getFirestore, collection, getDocs, deleteDoc, doc, count } from "firebase/firestore";
-import { app } from '../firebase';
-import bin from '../assets/images/bin.png'
+import { getFirestore, collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import { app } from "../firebase";
+import bin from "../assets/images/bin.png";
 import { useRouter } from "next/navigation";
+
 type Product = {
   id: string;
   name: string;
   price: string;
-  // ... other properties
+  // Add other properties as needed
 };
 
 const Navbar: React.FC = () => {
   const router = useRouter();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [trigger, setTrigger] = useState(false);
-  const [cartItems, setCartItems] = useState<Product[]>([]);
+  const [cartItems, setCartItems] = useState<Array<Product>>([]);
   const [total, setTotal] = useState(0);
   const [count1, setCount1] = useState(1);
 
@@ -62,7 +60,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    setTotal(cartItems.reduce((acc, item) => acc + (parseInt(item.price.replace('Rs ', '')) * count1), 0));
+    setTotal(cartItems.reduce((acc, item) => acc + parseInt(item.price.replace("Rs ", "")) * count1, 0));
   }, [count1, cartItems]);
 
   return (
@@ -83,11 +81,11 @@ const Navbar: React.FC = () => {
           </div>
           <div className="flex justify-center items-center gap-8 translate-x-[-2rem]">
             <div>
-              <Image src={user} alt="" height={28} width={28} />
+              <Image src="/path/to/login.png" alt="" height={28} width={28} />
             </div>
             <div className="cursor-pointer">
               <Image
-                src={cat}
+                src="/path/to/cart.png"
                 alt=""
                 height={28}
                 width={28}
@@ -124,12 +122,12 @@ const Navbar: React.FC = () => {
                   <button className="h-[40px] w-[60px] bg-black text-white text-sm rounded-xl" onClick={() => { setCount1(count1 + 1); }}>+</button>
                   {count1}
                   <button className="h-[40px] w-[60px] bg-black text-white text-sm rounded-xl" onClick={() => { setCount1(count1 - 1); }}>-</button>
-                  <div>Total: {parseInt(item.price.replace('Rs ', '')) * count1}</div>
+                  <div>Total: {parseInt(item.price.replace("Rs ", "")) * count1}</div>
                   <button
                     className="h-[40px] w-[40px] text-white text-sm rounded-xl"
                     onClick={() => deleteProduct(item.id)}
                   >
-                    <Image src={bin} alt="" objectFit="cover" />
+                    <Image src="/path/to/bin.png" alt="" objectFit="cover" />
                   </button>
                 </li>
               ))}
