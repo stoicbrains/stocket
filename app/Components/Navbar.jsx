@@ -13,7 +13,7 @@ const Navbar = () => {
   const router = useRouter();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [trigger, setTrigger] = useState(false);
-  const [cartItems, setCartItems] = useState<Array>([]);
+  const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
   const [count1, setCount1] = useState(1);
 
