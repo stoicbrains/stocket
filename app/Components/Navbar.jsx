@@ -7,18 +7,13 @@ import { app } from "../firebase";
 import bin from "../assets/images/bin.png";
 import { useRouter } from "next/navigation";
 
-type Product = {
-  id: string;
-  name: string;
-  price: string;
-  // Add other properties as needed
-};
 
-const Navbar: React.FC = () => {
+
+const Navbar = () => {
   const router = useRouter();
   const [scrollProgress, setScrollProgress] = useState(0);
   const [trigger, setTrigger] = useState(false);
-  const [cartItems, setCartItems] = useState<Array<Product>>([]);
+  const [cartItems, setCartItems] = useState<Array>([]);
   const [total, setTotal] = useState(0);
   const [count1, setCount1] = useState(1);
 
@@ -40,11 +35,11 @@ const Navbar: React.FC = () => {
     const db = getFirestore(app);
     const productsCollection = collection(db, "products");
     const productsSnapshot = await getDocs(productsCollection);
-    const products = productsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() } as Product));
+    const products = productsSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
     setCartItems(products);
   };
 
-  const deleteProduct = async (productId: any) => {
+  const deleteProduct = async (productId) => {
     try {
       const db = getFirestore(app);
       const productRef = doc(db, "products", productId);
@@ -127,7 +122,7 @@ const Navbar: React.FC = () => {
                     className="h-[40px] w-[40px] text-white text-sm rounded-xl"
                     onClick={() => deleteProduct(item.id)}
                   >
-                    <Image src="/path/to/bin.png" alt="" objectFit="cover" />
+                    <Image src={bin} alt="" objectFit="cover" />
                   </button>
                 </li>
               ))}
