@@ -5,6 +5,8 @@ import Link from "next/link";
 import { getFirestore, collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { app } from "../firebase";
 import bin from "../assets/images/bin.png";
+import cart from "../assets/images/cart.png"
+import login from "../assets/images/login.png"
 import { useRouter } from "next/navigation";
 
 
@@ -76,11 +78,11 @@ const Navbar = () => {
           </div>
           <div className="flex justify-center items-center gap-8 translate-x-[-2rem]">
             <div>
-              <Image src="/path/to/login.png" alt="" height={28} width={28} />
+              <Image src={login} alt="" height={28} width={28} />
             </div>
             <div className="cursor-pointer">
               <Image
-                src="/path/to/cart.png"
+                src={cart}
                 alt=""
                 height={28}
                 width={28}
