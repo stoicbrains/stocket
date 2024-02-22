@@ -21,6 +21,7 @@ const Videocaoursel = () => {
               alt=''
               width={1200}
               height={900}
+              key={i}
               className={`h-full w-full object-top absolute top-0 left-0 transition-all duration-700 delay-75 ease-out ${
                 selectedVideoIndex === i ? 'opacity-1 ' : 'opacity-0 left-[100%]'
               }`}
