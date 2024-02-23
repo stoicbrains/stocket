@@ -1,8 +1,8 @@
 import React from 'react';
 import Image from 'next/image';
-import img1 from '../assets/images/highPowerbank.jpg';
-import img2 from '../assets/images/headphone.jpg'; // Import these images if needed
-import img3 from '../assets/images/earbuds.jpg'; // Import these images if needed
+import img1 from '../assets/images/Product/smartwatch1.jpg';
+import img2 from '../assets/images/Product/surround.jpg'; // Import these images if needed
+import img3 from '../assets/images/Product/retro spe.jpg'; // Import these images if needed
 
 import { useRouter } from 'next/navigation';
 const Card = () => {
