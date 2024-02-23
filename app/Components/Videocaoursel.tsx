@@ -10,7 +10,6 @@ const videoArr = [
 
 const Videocaoursel = () => {
   const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
-  const [trigger,setTrigger] = useState(true);
   useEffect(() => {
     const intervalId = setInterval(() => {
       // Calculate the next index, and loop back to the start if it exceeds the array length
