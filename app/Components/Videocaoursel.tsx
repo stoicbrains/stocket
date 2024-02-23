@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import img1 from '../assets/images/giphy.gif'
 import img2 from '../assets/images/second.gif'
 import Image from 'next/image';
@@ -11,6 +11,16 @@ const videoArr = [
 const Videocaoursel = () => {
   const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
   const [trigger,setTrigger] = useState(true);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // Calculate the next index, and loop back to the start if it exceeds the array length
+      setSelectedVideoIndex((prevIndex) => (prevIndex + 1) % videoArr.length);
+    }, 5000); // Change the duration (in milliseconds) as needed
+
+    // Clear the interval when the component is unmounted or dependencies change
+    return () => clearInterval(intervalId);
+  }, []); // Empty dependency array to run the effect only once on mount
+
   return (
     <React.Fragment>
       <div className='h-[35rem] w-[90vw] rounded-3xl relative left-[50%] translate-x-[-50%] top-5 bg-slate-500 overflow-hidden'>
