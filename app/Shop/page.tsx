@@ -6,14 +6,23 @@ import { app } from '../firebase';
 import Navbar from "../Components/Navbar";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import img from '../assets/images/watch.jpg'
-import ear from '../assets/images/earbuds.jpg'
-import headp from "../assets/images/headphone.jpg"
-import highbank from "../assets/images/highPowerbank.jpg"
-import cable from "../assets/images/cable.jpg"
-import watch from "../assets/images/watch.jpg"
-import port from "../assets/images/portableSpeaker.jpg"
-import fast from "../assets/images/fastcharge.jpg"
+import fifteen from "../assets/images/Product/nfhead.jpg";
+import fourteen from "../assets/images/Product/music.jpg";
+import thirteen from "../assets/images/Product/multiport.jpg";
+import twelve from "../assets/images/Product/mic.jpg";
+import eleven from "../assets/images/Product/eco.jpg";
+import ten from "../assets/images/Product/breded.jpg";
+import nine from "../assets/images/Product/blood.jpg";
+import  eight from "../assets/images/Product/overear.jpg";
+import seven from "../assets/images/Product/quickCharge.jpg";
+import six from "../assets/images/Product/retro spe.jpg";
+import five from "../assets/images/Product/slim.jpg";
+import four from "../assets/images/Product/smarthome.jpg";
+import three from "../assets/images/Product/smartwatch1.jpg";
+import two from "../assets/images/Product/surround.jpg";
+import one from "../assets/images/Product/watch.jpg";
+
+
 const db = getFirestore(app);
 
 const Page = () => {
@@ -84,8 +93,8 @@ const Page = () => {
   return (
     <>
       <Navbar />
-      <div className="absolute top-[8rem] left-[50%] translate-x-[-50%] h-[80vh] w-[80vw] rounded-xl bg-[#6413E8] overflow-y-scroll scroll-smooth" style={{ scrollbarWidth: 'thin' }}>
-        <form action="">
+      <div className="absolute top-[8rem] left-[50%] translate-x-[-50%] h-[80vh] w-[80vw] rounded-xl bg-[#6413E8] overflow-y-scroll scroll-smooth p-10" style={{ scrollbarWidth: 'thin' }}>
+        {/* <form action="">
           <div className="flex justify-center items-center gap-[3rem] my-3">
             <input
               name="Question"
@@ -111,17 +120,25 @@ const Page = () => {
               Publish
             </button>
           </div>
-        </form>
+        </form> */}
 
         <div>
           <ul className="w-[100%] h-[100%] relative left-[50%] translate-x-[-50%] text-black text-lg flex flex-col gap-[4rem] justify-center items-center">
-            <div className="absolute h-[300px] w-[300px] top-[1.1rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={highbank} alt="" objectFit="cover" style={{height:'100%'}}/></div>
-            <div className="absolute h-[300px] w-[300px] top-[25rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={headp} alt="" objectFit="cover" style={{height:'100%'}}/></div>
-            <div className="absolute h-[300px] w-[300px] top-[49rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={cable} alt="" objectFit="cover" style={{height:'100%'}}/></div>
-            <div className="absolute h-[300px] w-[300px] top-[73rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={ear} alt="" objectFit="cover" style={{height:'100%'}}/></div>
-            <div className="absolute h-[300px] w-[300px] top-[96.5rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={port} alt="" objectFit="cover" style={{height:'100%'}}/></div>
-            <div className="absolute h-[300px] w-[300px] top-[121rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={fast} alt="" objectFit="cover" style={{height:'100%'}}/></div>
-            <div className="absolute h-[300px] w-[300px] top-[145rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={ear} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[1.1rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={one} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[25rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={two} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[49rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={three} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[73rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={four} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[96.5rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={five} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[121rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={six} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[145rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={seven} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[169rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={eight} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[193rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={nine} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[217rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={ten} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[241rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={eleven} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[265rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={twelve} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[289rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={thirteen} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[313rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={fourteen} alt="" objectFit="cover" style={{height:'100%'}}/></div>
+            <div className="absolute h-[300px] w-[300px] top-[337rem] left-[1rem] bg-white rounded-xl overflow-hidden"><Image src={fifteen} alt="" objectFit="cover" style={{height:'100%'}}/></div>
 
             {queries.map((query) => (
               <li
@@ -150,3 +167,5 @@ const Page = () => {
 };
 
 export default Page;
+
+

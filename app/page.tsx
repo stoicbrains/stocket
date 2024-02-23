@@ -6,8 +6,8 @@ import Card from './Components/card'
 
 const index = () => {
   return (
-    <div className='overflow-x-hidden scroll-smooth' >
-      <div></div>
+    <div className='overflow-x-hidden scroll-smooth overflow-hidden' >
+     
       <Navbar/>
       <Videocaoursel/>
       <Card/>

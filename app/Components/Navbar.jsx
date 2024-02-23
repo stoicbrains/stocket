@@ -143,7 +143,7 @@ const Navbar = () => {
           </button>
           <div>
             <h2 className="text-xl font-semibold my-2">Cart Items</h2>
-            <ul>
+            <ul className="h-[40vh] bg-red-300 overflow-y-scroll rounded-xl m-5">
               {cartItems.map((item) => (
                 <li
                   key={item.id}

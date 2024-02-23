@@ -26,7 +26,7 @@ const Card = () => {
       </div>
       <button onClick={()=>{
         router.replace('/Shop')
-      }} className="text-sm bg-black text-white h-[60px] w-[200px] rounded-xl my-[2rem] left-[50%] translate-x-[-50%] transition-all duration-300 ease-in-out before:transition-all hover:scale-[1.1] before:duration-500 before:ease-out relative overflow-hidden z-[1] before:absolute before:left-0 before:top-0 before:h-full before:w-0 before:bg-violet-400 hover:before:w-full before:z-[-1] ">Intrested Shop now!</button>
+      }} className="text-sm bg-black text-white h-[60px] w-[200px] rounded-xl my-[2rem] left-[50%] translate-x-[-50%] transition-all duration-300 ease-in-out before:transition-all hover:scale-[1.1] before:duration-500 before:ease-out relative overflow-hidden z-[10] before:absolute before:left-0 before:top-0 before:h-full before:w-0 before:bg-violet-400 hover:before:w-full before:z-[-1] ">Intrested Shop now!</button>
     </div>
   );
 };
